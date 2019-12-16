@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4689C0DB23A739B00044F19C /* TestCocoaJNI.h in Headers */ = {isa = PBXBuildFile; fileRef = 4689C0DA23A739B00044F19C /* TestCocoaJNI.h */; };
-		4689C0DD23A739B00044F19C /* TestCocoaJNI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4689C0DC23A739B00044F19C /* TestCocoaJNI.m */; };
+		4689C0DB23A739B00044F19C /* CocoaJNI.h in Headers */ = {isa = PBXBuildFile; fileRef = 4689C0DA23A739B00044F19C /* CocoaJNI.h */; };
+		4689C0DD23A739B00044F19C /* CocoaJNI.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4689C0DC23A739B00044F19C /* CocoaJNI.mm */; };
+		4689C0E523A739F50044F19C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4689C0E423A739F50044F19C /* Cocoa.framework */; };
+		4689C0E823A73A120044F19C /* NSPasteboardAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 4689C0E623A73A120044F19C /* NSPasteboardAPI.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4689C0D723A739B00044F19C /* libTestCocoaJNI.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTestCocoaJNI.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4689C0DA23A739B00044F19C /* TestCocoaJNI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCocoaJNI.h; sourceTree = "<group>"; };
-		4689C0DC23A739B00044F19C /* TestCocoaJNI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestCocoaJNI.m; sourceTree = "<group>"; };
+		4689C0D723A739B00044F19C /* libNSPasteboardJNI.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libNSPasteboardJNI.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4689C0DA23A739B00044F19C /* CocoaJNI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaJNI.h; sourceTree = "<group>"; };
+		4689C0DC23A739B00044F19C /* CocoaJNI.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaJNI.mm; sourceTree = "<group>"; };
+		4689C0E423A739F50044F19C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4689C0E623A73A120044F19C /* NSPasteboardAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSPasteboardAPI.h; sourceTree = "<group>"; };
+		4689C0EA23A73A4E0044F19C /* JNIBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JNIBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4689C0E523A739F50044F19C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -31,26 +37,37 @@
 		4689C0CE23A739B00044F19C = {
 			isa = PBXGroup;
 			children = (
-				4689C0D923A739B00044F19C /* TestCocoaJNI */,
+				4689C0D923A739B00044F19C /* NSPasteboardJNI */,
 				4689C0D823A739B00044F19C /* Products */,
+				4689C0E323A739F50044F19C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		4689C0D823A739B00044F19C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4689C0D723A739B00044F19C /* libTestCocoaJNI.dylib */,
+				4689C0D723A739B00044F19C /* libNSPasteboardJNI.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4689C0D923A739B00044F19C /* TestCocoaJNI */ = {
+		4689C0D923A739B00044F19C /* NSPasteboardJNI */ = {
 			isa = PBXGroup;
 			children = (
-				4689C0DA23A739B00044F19C /* TestCocoaJNI.h */,
-				4689C0DC23A739B00044F19C /* TestCocoaJNI.m */,
+				4689C0DA23A739B00044F19C /* CocoaJNI.h */,
+				4689C0DC23A739B00044F19C /* CocoaJNI.mm */,
+				4689C0E623A73A120044F19C /* NSPasteboardAPI.h */,
+				4689C0EA23A73A4E0044F19C /* JNIBridge.h */,
 			);
-			path = TestCocoaJNI;
+			path = NSPasteboardJNI;
+			sourceTree = "<group>";
+		};
+		4689C0E323A739F50044F19C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4689C0E423A739F50044F19C /* Cocoa.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,16 +77,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4689C0DB23A739B00044F19C /* TestCocoaJNI.h in Headers */,
+				4689C0DB23A739B00044F19C /* CocoaJNI.h in Headers */,
+				4689C0E823A73A120044F19C /* NSPasteboardAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4689C0D623A739B00044F19C /* TestCocoaJNI */ = {
+		4689C0D623A739B00044F19C /* NSPasteboardJNI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4689C0E023A739B00044F19C /* Build configuration list for PBXNativeTarget "TestCocoaJNI" */;
+			buildConfigurationList = 4689C0E023A739B00044F19C /* Build configuration list for PBXNativeTarget "NSPasteboardJNI" */;
 			buildPhases = (
 				4689C0D323A739B00044F19C /* Headers */,
 				4689C0D423A739B00044F19C /* Sources */,
@@ -79,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = TestCocoaJNI;
+			name = NSPasteboardJNI;
 			productName = TestCocoaJNI;
-			productReference = 4689C0D723A739B00044F19C /* libTestCocoaJNI.dylib */;
+			productReference = 4689C0D723A739B00044F19C /* libNSPasteboardJNI.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4689C0D223A739B00044F19C /* Build configuration list for PBXProject "TestCocoaJNI" */;
+			buildConfigurationList = 4689C0D223A739B00044F19C /* Build configuration list for PBXProject "NSPasteboardJNI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,7 +129,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4689C0D623A739B00044F19C /* TestCocoaJNI */,
+				4689C0D623A739B00044F19C /* NSPasteboardJNI */,
 			);
 		};
 /* End PBXProject section */
@@ -121,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4689C0DD23A739B00044F19C /* TestCocoaJNI.m in Sources */,
+				4689C0DD23A739B00044F19C /* CocoaJNI.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +196,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/include/darwin,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -230,6 +252,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/include,
+					"/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/include/darwin\n/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/include/darwin\n/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home/include/darwin",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -264,7 +290,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4689C0D223A739B00044F19C /* Build configuration list for PBXProject "TestCocoaJNI" */ = {
+		4689C0D223A739B00044F19C /* Build configuration list for PBXProject "NSPasteboardJNI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4689C0DE23A739B00044F19C /* Debug */,
@@ -273,7 +299,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4689C0E023A739B00044F19C /* Build configuration list for PBXNativeTarget "TestCocoaJNI" */ = {
+		4689C0E023A739B00044F19C /* Build configuration list for PBXNativeTarget "NSPasteboardJNI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4689C0E123A739B00044F19C /* Debug */,

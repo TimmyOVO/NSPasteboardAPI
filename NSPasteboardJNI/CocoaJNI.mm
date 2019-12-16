@@ -44,15 +44,27 @@ string JNINSPasteboard::getContent(int type){
         default:
             break;
     }
+    if(content == nullptr){
+        return "";
+    }
     return [content UTF8String];
 }
 
 void JNINSPasteboard::writeString(string s){
     NSPasteboard*  generalPasteboard  = [NSPasteboard generalPasteboard];
-    [generalPasteboard setString:[NSString stringWithUTF8String:s.c_str()] forType:NSPasteboardTypeString];
+    NSString* input = [NSString stringWithUTF8String:s.c_str()];
+    //clear pasteboard first
+    clearContent();
+    //write string
+    [generalPasteboard writeObjects:[NSArray arrayWithObject:input]];
+    
 }
 
 void JNINSPasteboard::writeFileURL(string url){
     NSPasteboard*  generalPasteboard  = [NSPasteboard generalPasteboard];
-    [generalPasteboard setString:[NSString stringWithUTF8String:url.c_str()] forType:NSPasteboardTypeFileURL];
+    NSString* input = [NSString stringWithUTF8String:url.c_str()];
+    NSURL* nsurl = [NSURL fileURLWithPath:input];
+    // clear pasteboard
+    clearContent();
+    [generalPasteboard writeObjects:[NSArray arrayWithObject:nsurl]];
 }

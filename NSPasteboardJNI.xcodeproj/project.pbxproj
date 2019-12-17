@@ -37,6 +37,7 @@
 		4689C0CE23A739B00044F19C = {
 			isa = PBXGroup;
 			children = (
+				4689C0EB23A861D40044F19C /* Java */,
 				4689C0D923A739B00044F19C /* NSPasteboardJNI */,
 				4689C0D823A739B00044F19C /* Products */,
 				4689C0E323A739F50044F19C /* Frameworks */,
@@ -68,6 +69,13 @@
 				4689C0E423A739F50044F19C /* Cocoa.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4689C0EB23A861D40044F19C /* Java */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Java;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

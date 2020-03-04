@@ -32,7 +32,7 @@ void JNINSPasteboard::clearContent(){
     [myPasteboard clearContents];
 }
 
-string JNINSPasteboard::getContent(int type){
+std::string JNINSPasteboard::getContent(int type){
     NSPasteboard*  generalPasteboard  = [NSPasteboard generalPasteboard];
     NSString* content;
     switch (type) {
@@ -50,7 +50,7 @@ string JNINSPasteboard::getContent(int type){
     return [content UTF8String];
 }
 
-void JNINSPasteboard::writeString(string s){
+void JNINSPasteboard::writeString(std::string s){
     NSPasteboard*  generalPasteboard  = [NSPasteboard generalPasteboard];
     NSString* input = [NSString stringWithUTF8String:s.c_str()];
     //clear pasteboard first
@@ -60,11 +60,22 @@ void JNINSPasteboard::writeString(string s){
     
 }
 
-void JNINSPasteboard::writeFileURL(string url){
+void JNINSPasteboard::writeFileURL(std::string url){
     NSPasteboard*  generalPasteboard  = [NSPasteboard generalPasteboard];
     NSString* input = [NSString stringWithUTF8String:url.c_str()];
     NSURL* nsurl = [NSURL fileURLWithPath:input];
     // clear pasteboard
     clearContent();
     [generalPasteboard writeObjects:[NSArray arrayWithObject:nsurl]];
+}
+
+void JNINSPasteboard::writeFilesURL(std::list<std::string> urls){
+    NSPasteboard*  generalPasteboard  = [NSPasteboard generalPasteboard];
+    NSMutableArray* u = [NSMutableArray arrayWithCapacity:urls.size()];
+    for(std::string url : urls){
+        NSString* cc = [NSString stringWithUTF8String:url.c_str()];
+        [u addObject:[NSURL fileURLWithPath:cc]];
+    }
+    clearContent();
+    [generalPasteboard writeObjects:u];
 }

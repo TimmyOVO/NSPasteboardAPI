@@ -2,8 +2,6 @@
 #include <jni.h>
 /* Header for class com_github_timmyovo_nspasteboard_NSPasteboardAPI */
 
-#include "JNIBridge.h"
-
 #ifndef _Included_com_github_timmyovo_nspasteboard_NSPasteboardAPI
 #define _Included_com_github_timmyovo_nspasteboard_NSPasteboardAPI
 #ifdef __cplusplus
@@ -15,9 +13,7 @@ extern "C" {
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_clearContent
- (JNIEnv* env, jclass){
-     JNINSPasteboard::clearContent();
- }
+(JNIEnv* env, jclass);
 
 /*
  * Class:     com_github_timmyovo_nspasteboard_NSPasteboardAPI
@@ -25,9 +21,7 @@ JNIEXPORT void JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_cle
  * Signature: (I)Ljava/lang/String;
  */
 JNIEXPORT jstring JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_getClipboardContent
- (JNIEnv* env, jclass, jint type){
-     return env->NewStringUTF(JNINSPasteboard::getContent(type).c_str());
- }
+(JNIEnv* env, jclass, jint type);
 
 /*
  * Class:     com_github_timmyovo_nspasteboard_NSPasteboardAPI
@@ -35,10 +29,7 @@ JNIEXPORT jstring JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_
  * Signature: (Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_writeClipboardString
- (JNIEnv* env, jclass, jstring s){
-     const char* arg = env->GetStringUTFChars(s, 0);
-     JNINSPasteboard::writeString(arg);
- }
+(JNIEnv* env, jclass, jstring s);
 
 /*
  * Class:     com_github_timmyovo_nspasteboard_NSPasteboardAPI
@@ -46,10 +37,10 @@ JNIEXPORT void JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_wri
  * Signature: (Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_writeClipboardFileURL
- (JNIEnv* env, jclass, jstring url){
-     const char* arg = env->GetStringUTFChars(url, 0);
-     JNINSPasteboard::writeFileURL(arg);
- }
+(JNIEnv* env, jclass, jstring url);
+
+JNIEXPORT void JNICALL Java_com_github_timmyovo_nspasteboard_NSPasteboardAPI_writeClipboardFilesURL
+ (JNIEnv *env, jclass, jobjectArray urls);
 
 #ifdef __cplusplus
 }
